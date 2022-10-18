@@ -1,27 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="{{ url_for('static', filename='javascripts/js.js') }}"></script>
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div class="landing-page">
-            landing
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <h1>Mario and Luigi's</h1>
+</div>
+<div class="content-container">
+    <div class="home-img">
+        <div class="home-texts">
+            <h1> AN AUTHENTIC ITALIAN EXPERIENCE</h1>
+            <p>Welcome to Mario and Luigi's</p>
+            <p>You'll see the wonders of an truely authentic italian delicacy.</p>
+            <div class="btn-group">
+                <a href="/menu">
+                    <button type="button"> See our menu </button>
+                </a>
+            </div>
         </div>
-        <div class="about">
-            about
-        </div>
-        <div class="menu">
-            menu
-        </div>
-        <div class="contact">
-            contact
-        </div>
+        <!-- bg src : https://www.pexels.com/photo/a-chef-preparing-a-pizza-5953544/ -->
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
