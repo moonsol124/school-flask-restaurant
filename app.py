@@ -34,6 +34,32 @@ def index():
 
     return render_template('index.html', user=user, orders=allOrders)
 
+@app.route('/order', methods=['POST', 'GET'])
+def order():
+    if request.method == "POST":
+        data = request.json
+        order = data['order']
+        totalPrice = 0
+        for i in range(0, len(order)):
+            totalPrice = totalPrice+int(order[i]['price'])
+        now = datetime.now()
+        time = str(now.year)+'-'+str(now.month)+'-'+str(now.day)+' '+str(now.hour)+':'+str(now.minute)+':'+str(now.second)
+        # print(order, totalPrice)
+        id = uuid.uuid1().hex
+        order_input = {
+            'order': order,
+            'total_price': totalPrice,
+            'order_time' : time,
+            '_id': id,
+        }
+        orders.insert_one(order_input)
+        order_found = orders.find_one({'_id': id})
+        response = {
+            'order_number': order_found['_id']
+        }
+        return jsonify(response), 200
+
+
 @app.route('/oven', methods=['POST', 'GET'])
 def oven_get():
     data = request.json
