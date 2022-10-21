@@ -12,16 +12,14 @@ body {
 
 .container {
     display: grid; 
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: 60px 1fr;
     width: 100%;
     height: 100%;
-    background-color: rgb(255, 191, 117);
     position: relative;
 }
 
 .nav {
-    margin-top: 2rem;
-    background-color: brown;
+    background-color: rgb(48, 148, 211);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +29,6 @@ body {
     width: 50px;
     height: 200px;
     position: absolute;
-    background-color: green;
     top: 0;
     left: 5%;
 }
@@ -45,6 +42,7 @@ body {
     gap: 1rem;
     width: 100%;
     height: 100%;
+    background-color: lightskyblue;
 }
 
 .menu {
@@ -137,10 +135,11 @@ body {
 
 .content-container {
     width: 100%;
-    height: 100%;
-    background-color: rgb(255, 219, 179);
+    height: 500px;
+    overflow-y: scroll;
+    background-color: white;
+    padding: 1rem;
     border-radius: 1rem;
-    max-width: 800px;
 }
 
 .menu-content {
@@ -226,10 +225,34 @@ a {
     color: white;
 }
 
-.order-container {
+.order-list {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.order-item-info-detail {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+}
+
+.order-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;   
+}
+
+.order-foods {
+    display: flex;
+    flex-direction: column;
+    gap: .1rem;
+}
+
+.order-foods-li {
+    margin-left: 40px;
+}
+li {
+    list-style-type: none;
 }
