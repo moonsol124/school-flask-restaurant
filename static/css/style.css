@@ -19,7 +19,7 @@ body {
 }
 
 .nav {
-    background-color: rgb(48, 148, 211);
+    background-color: lightskyblue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -206,14 +206,13 @@ body {
 }
 
 button {
-    padding: 5px 10px;
-    background-color: brown;
-    color: white;
+    padding: 5px 1rem;
+    background-color: white;
+    color: black;
     border: none;
+    font-size: 1rem;
     outline: none;
-    font-size: 1.5rem;
     border-radius: 10px;
-    width: 200px;
 }
 
 button:hover {
@@ -255,4 +254,23 @@ a {
 }
 li {
     list-style-type: none;
+}
+
+.sub-nav {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.oven-form {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }

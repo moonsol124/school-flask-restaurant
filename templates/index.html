@@ -1,6 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-<h2> Order list</h2>
+<div class="sub-nav">
+    <h2> Order list</h2>
+    <form action="/oven" method='POST' class="oven-form">
+        <div class="radio-group">
+            <div>
+                <label for="on">On</label>
+                <input type="radio" value="on" name="oven" id="on">
+            </div>
+            <div>
+                <label for="off">off</label>
+                <input type="radio" value="off" name="oven" id="off">
+            </div>
+        </div>
+        <div>
+            <button type="submit">Control oven</button>
+        </div>
+    </form>
+</div>
 <div class="content-container">
     <ul class="order-list">
         {% for order in orders %}

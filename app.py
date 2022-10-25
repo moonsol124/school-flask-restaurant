@@ -7,6 +7,10 @@ from flask_jwt_extended import create_access_token,get_jwt,get_jwt_identity, \
                                unset_jwt_cookies, jwt_required, JWTManager
 from datetime import datetime, timedelta, timezone, date
 import uuid
+import requests
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = "please-remember-to-change-me"
@@ -14,7 +18,9 @@ app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 jwt = JWTManager(app)
 CORS(app)
 app.secret_key = 'testing'
-client = pymongo.MongoClient('mongodb+srv://school:school@cluster0.p9yyvaf.mongodb.net/?retryWrites=true&w=majority')
+
+client = pymongo.MongoClient(os.getenv('MONGO'))
+print(client)
 db = client.get_database('restaurant')
 users = db.users
 orders = db.orders
@@ -59,10 +65,23 @@ def order():
         }
         return jsonify(response), 200
 
-
 @app.route('/oven', methods=['POST', 'GET'])
 def oven_get():
-    data = request.json
+    url = 'http://145.93.161.60:5000/oven'
+
+    data = request.form.get('oven')
+    if data == None:
+        return
+    else:
+        if data == 'on':
+            oven = {'oven': data}
+            response = requests.post(url, json=oven)
+            # print ("oven is on")
+        else:
+            oven = {'oven': data}
+            response = requests.post(url, json=oven)            
+            # print ("oven is off")
+
     return render_template('oven.html')
 
 @app.route("/register", methods=['post', 'get'])
