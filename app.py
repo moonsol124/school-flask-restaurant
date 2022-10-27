@@ -11,8 +11,10 @@ import requests
 from dotenv import load_dotenv
 load_dotenv()
 import os
+import gunicorn
 
 app = Flask(__name__)
+    
 app.config["JWT_SECRET_KEY"] = "please-remember-to-change-me"
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 jwt = JWTManager(app)
