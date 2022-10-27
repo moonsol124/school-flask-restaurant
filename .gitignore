@@ -1,4 +1,4 @@
 .env
-/__pycache__
-/flask_sesison
+./__pycache__
+./flask_sesison
 *.pyc
